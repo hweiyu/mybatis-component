@@ -14,6 +14,8 @@ public class ConnectionParam {
 
     private String table;
 
+    private String driver;
+
     public ConnectionParam(String ip, String port, String database, String username, String password, String table) {
         this.ip = ip;
         this.port = port;
@@ -21,9 +23,16 @@ public class ConnectionParam {
         this.username = username;
         this.password = password;
         this.table = table;
+        this.driver = "com.mysql.jdbc.Driver";
     }
 
-    public static String getUrl() {
+    public String getUrl() {
+        //todo assemble database url
+        return null;
+    }
+
+    public String getSql() {
+        //todo assmeble database sql
         return null;
     }
 
@@ -74,4 +83,13 @@ public class ConnectionParam {
     public void setTable(String table) {
         this.table = table;
     }
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
 }
