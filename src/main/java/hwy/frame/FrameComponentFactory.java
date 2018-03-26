@@ -1,12 +1,17 @@
 package hwy.frame;
 
 import hwy.constant.FrameCons;
+import hwy.model.Position;
 
 import javax.swing.*;
 
 public class FrameComponentFactory {
 
     private FrameComponent component;
+
+    private Position labelPos;
+
+    private Position textPos;
 
     public FrameComponent create() {
         createBase();
@@ -17,15 +22,16 @@ public class FrameComponentFactory {
 
     private void createBase() {
         this.component = new FrameComponent();
+        int step = 30;
+        this.labelPos = new Position(10, 20, 100, 25, step);
+        this.textPos = new Position(120, 20, 300, 25, step);
     }
 
     private void initResources() {
         initPanel();
-        initUrl();
-        initUsername();
-        initPassword();
-        initTable();
+        initJdbcConnect();
         initOutPath();
+        initPackage();
         initButton();
     }
 
@@ -35,65 +41,100 @@ public class FrameComponentFactory {
         this.component.setPanel(panel);
     }
 
-    private void initUrl() {
-        JLabel urlLabel = createLabel("database url : ", 10, 20, 80, 25);
-        this.component.setUrlLabel(urlLabel);
-        JTextField urlText = createTextField(FrameCons.URL_TEST_NAME, 20, 100, 20, 550, 25);
-        this.component.setUrlText(urlText);
+    private void initJdbcConnect() {
+        initIp();
+        initPort();
+        initDatabase();
+        initUsername();
+        initPassword();
+        initTable();
+    }
+
+    private void initIp() {
+        JLabel ipLabel = createLabel(FrameCons.IP_LABEL, labelPos);
+        this.component.setIpLabel(ipLabel);
+        JTextField ipText = createTextField(FrameCons.IP_TEXT_NAME, textPos);
+        this.component.setIpText(ipText);
+    }
+
+    private void initPort() {
+        JLabel portLabel = createLabel(FrameCons.PORT_LABEL, labelPos.nextY());
+        this.component.setPortLabel(portLabel);
+        JTextField portText = createTextField(FrameCons.PORT_TEXT_NAME, textPos.nextY());
+        this.component.setPortText(portText);
+    }
+
+    private void initDatabase() {
+        JLabel databaseLabel = createLabel(FrameCons.DATABASE_LABEL, labelPos.nextY());
+        this.component.setDatabaseLabel(databaseLabel);
+        JTextField databaseText = createTextField(FrameCons.DATABASE_TEXT_NAME, textPos.nextY());
+        this.component.setDatabaseText(databaseText);
     }
 
     private void initUsername() {
-        JLabel usernameLabel = createLabel("user name : ", 10, 50, 80, 25);
+        JLabel usernameLabel = createLabel(FrameCons.USERNAME_LABEL, labelPos.nextY());
         this.component.setUsernameLabel(usernameLabel);
-        JTextField usernameText = createTextField(FrameCons.USERNAME_TEST_NAME, 20, 100, 50, 300, 25);
+        JTextField usernameText = createTextField(FrameCons.USERNAME_TEXT_NAME, textPos.nextY());
         this.component.setUsernameText(usernameText);
     }
 
     private void initPassword() {
-        JLabel passwordLabel = createLabel("password : ", 10, 80, 80, 25);
+        JLabel passwordLabel = createLabel(FrameCons.PASSWORD_LABEL, labelPos.nextY());
         this.component.setPasswordLabel(passwordLabel);
-        JTextField passwordText = createTextField(FrameCons.PASSWORD_TEST_NAME, 20, 100, 80, 300, 25);
+        JTextField passwordText = createTextField(FrameCons.PASSWORD_TEXT_NAME, textPos.nextY());
         this.component.setPasswordText(passwordText);
     }
 
     private void initTable() {
-        JLabel tableLabel = createLabel("table name : ", 10, 110, 80, 25);
+        JLabel tableLabel = createLabel(FrameCons.TABLE_LABEL, labelPos.nextY());
         this.component.setTableLabel(tableLabel);
-        JTextField tableText = createTextField(FrameCons.TABLE_TEST_NAME, 20, 100, 110, 300, 25);
+        JTextField tableText = createTextField(FrameCons.TABLE_TEXT_NAME, textPos.nextY());
         this.component.setTableText(tableText);
     }
 
     private void initOutPath() {
-        JLabel outLabel = createLabel("output path : ", 10, 140, 80, 25);
+        JLabel outLabel = createLabel(FrameCons.OUTPATH_LABEL, labelPos.nextY());
         this.component.setOutLabel(outLabel);
-        JTextField outText = createTextField(FrameCons.OUTPATH_TEST_NAME, 20, 100, 140, 300, 25);
+        JTextField outText = createTextField(FrameCons.OUTPATH_TEXT_NAME, textPos.nextY());
         this.component.setOutText(outText);
     }
 
-    private JLabel createLabel(String text, int x, int y, int width, int height) {
-        JLabel label = new JLabel(text);
-        label.setBounds(x, y, width, height);
-        return label;
-    }
-
-    private JTextField createTextField(String name, int columns, int x, int y, int width, int height) {
-        JTextField textField = new JTextField(columns);
-        textField.setName(name);
-        textField.setBounds(x, y, width, height);
-        return textField;
+    private void initPackage() {
+        JLabel packageLabel = createLabel(FrameCons.PACKAGEPATH_LABEL, labelPos.nextY());
+        this.component.setPackageLabel(packageLabel);
+        JTextField packageText = createTextField(FrameCons.PACKAGEPATH_TEXT_NAME, textPos.nextY());
+        this.component.setPackageText(packageText);
     }
 
     private void initButton() {
-        JButton createBtn = new JButton("create");
-        createBtn.setBounds(10, 170, 80, 25);
+        JButton createBtn = new JButton(FrameCons.CREATE_BUTTON_NAME);
+        createBtn.setBounds(labelPos.nextY().convertToRect());
         createBtn.addActionListener(new FrameButtonAction(createBtn, this.component.getPanel()));
         this.component.setCreateBtn(createBtn);
     }
 
+    private JLabel createLabel(String text, Position pos) {
+        JLabel label = new JLabel(text);
+        label.setBounds(pos.convertToRect());
+        return label;
+    }
+
+    private JTextField createTextField(String name, Position pos) {
+        int textColumns = 20;
+        JTextField textField = new JTextField(textColumns);
+        textField.setName(name);
+        textField.setBounds(pos.convertToRect());
+        return textField;
+    }
+
     private void createPanel() {
         JPanel panel = this.component.getPanel();
-        panel.add(this.component.getUrlLabel());
-        panel.add(this.component.getUrlText());
+        panel.add(this.component.getIpLabel());
+        panel.add(this.component.getIpText());
+        panel.add(this.component.getPortLabel());
+        panel.add(this.component.getPortText());
+        panel.add(this.component.getDatabaseLabel());
+        panel.add(this.component.getDatabaseText());
         panel.add(this.component.getUsernameLabel());
         panel.add(this.component.getUsernameText());
         panel.add(this.component.getPasswordLabel());
@@ -102,6 +143,8 @@ public class FrameComponentFactory {
         panel.add(this.component.getTableText());
         panel.add(this.component.getOutLabel());
         panel.add(this.component.getOutText());
+        panel.add(this.component.getPackageLabel());
+        panel.add(this.component.getPackageText());
         panel.add(this.component.getCreateBtn());
     }
 

@@ -2,7 +2,8 @@ package hwy.frame;
 
 import hwy.constant.FrameCons;
 import hwy.exception.BusinessException;
-import hwy.model.Param;
+import hwy.model.ConfigParam;
+import hwy.model.ConnectionParam;
 import hwy.util.StringUtil;
 
 import javax.swing.*;
@@ -28,7 +29,7 @@ public class FrameButtonAction implements ActionListener {
         // 判断触发源是否为按钮
         if (e.getSource() == this.button) {
             try {
-                Param param = getParam();
+                ConfigParam config = getConfig();
                 //todo
             } catch (BusinessException be) {
                 JOptionPane.showMessageDialog(panel, be.getMessage(), "错误说明", JOptionPane.ERROR_MESSAGE);
@@ -36,7 +37,7 @@ public class FrameButtonAction implements ActionListener {
         }
     }
 
-    private Param getParam() {
+    private ConfigParam getConfig() {
         Map<String, String> textMap = new HashMap<String, String>();
         for (Component component : panel.getComponents()) {
             if (component instanceof JTextField) {
@@ -47,11 +48,19 @@ public class FrameButtonAction implements ActionListener {
                 textMap.put(cur.getName(), cur.getText());
             }
         }
-        return new Param(
-                textMap.get(FrameCons.URL_TEST_NAME),
-                textMap.get(FrameCons.USERNAME_TEST_NAME),
-                textMap.get(FrameCons.PASSWORD_TEST_NAME),
-                textMap.get(FrameCons.TABLE_TEST_NAME),
-                textMap.get(FrameCons.OUTPATH_TEST_NAME));
+        return new ConfigParam(
+                textMap.get(FrameCons.OUTPATH_TEXT_NAME),
+                textMap.get(FrameCons.PACKAGEPATH_TEXT_NAME),
+                getJdbcConfig(textMap));
+    }
+
+    private ConnectionParam getJdbcConfig(Map<String, String> textMap) {
+        return new ConnectionParam(
+                textMap.get(FrameCons.IP_TEXT_NAME),
+                textMap.get(FrameCons.PORT_TEXT_NAME),
+                textMap.get(FrameCons.DATABASE_TEXT_NAME),
+                textMap.get(FrameCons.USERNAME_TEXT_NAME),
+                textMap.get(FrameCons.PASSWORD_TEXT_NAME),
+                textMap.get(FrameCons.TABLE_TEXT_NAME));
     }
 }

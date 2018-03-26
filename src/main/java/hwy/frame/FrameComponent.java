@@ -6,8 +6,14 @@ public class FrameComponent {
 
     private JPanel panel;
 
-    private JLabel urlLabel;
-    private JTextField urlText;
+    private JLabel ipLabel;
+    private JTextField ipText;
+
+    private JLabel portLabel;
+    private JTextField portText;
+
+    private JLabel databaseLabel;
+    private JTextField databaseText;
 
     private JLabel usernameLabel;
     private JTextField usernameText;
@@ -21,6 +27,9 @@ public class FrameComponent {
     private JLabel outLabel;
     private JTextField outText;
 
+    private JLabel packageLabel;
+    private JTextField packageText;
+
     private JButton createBtn;
 
     public JPanel getPanel() {
@@ -31,20 +40,52 @@ public class FrameComponent {
         this.panel = panel;
     }
 
-    public JLabel getUrlLabel() {
-        return urlLabel;
+    public JLabel getIpLabel() {
+        return ipLabel;
     }
 
-    public void setUrlLabel(JLabel urlLabel) {
-        this.urlLabel = urlLabel;
+    public void setIpLabel(JLabel ipLabel) {
+        this.ipLabel = ipLabel;
     }
 
-    public JTextField getUrlText() {
-        return urlText;
+    public JTextField getIpText() {
+        return ipText;
     }
 
-    public void setUrlText(JTextField urlText) {
-        this.urlText = urlText;
+    public void setIpText(JTextField ipText) {
+        this.ipText = ipText;
+    }
+
+    public JLabel getPortLabel() {
+        return portLabel;
+    }
+
+    public void setPortLabel(JLabel portLabel) {
+        this.portLabel = portLabel;
+    }
+
+    public JTextField getPortText() {
+        return portText;
+    }
+
+    public void setPortText(JTextField portText) {
+        this.portText = portText;
+    }
+
+    public JLabel getDatabaseLabel() {
+        return databaseLabel;
+    }
+
+    public void setDatabaseLabel(JLabel databaseLabel) {
+        this.databaseLabel = databaseLabel;
+    }
+
+    public JTextField getDatabaseText() {
+        return databaseText;
+    }
+
+    public void setDatabaseText(JTextField databaseText) {
+        this.databaseText = databaseText;
     }
 
     public JLabel getUsernameLabel() {
@@ -117,5 +158,21 @@ public class FrameComponent {
 
     public void setCreateBtn(JButton createBtn) {
         this.createBtn = createBtn;
+    }
+
+    public JLabel getPackageLabel() {
+        return packageLabel;
+    }
+
+    public void setPackageLabel(JLabel packageLabel) {
+        this.packageLabel = packageLabel;
+    }
+
+    public JTextField getPackageText() {
+        return packageText;
+    }
+
+    public void setPackageText(JTextField packageText) {
+        this.packageText = packageText;
     }
 }
