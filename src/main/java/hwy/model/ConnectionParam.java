@@ -27,13 +27,13 @@ public class ConnectionParam {
     }
 
     public String getUrl() {
-        //todo assemble database url
-        return null;
+        String url = "jdbc:mysql://IP:PORT/DATABASE?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8";
+        return url.replace("IP", getIp()).replace("PORT", getPort()).replace("DATABASE", getDatabase());
     }
 
     public String getSql() {
-        //todo assmeble database sql
-        return null;
+        String sql = "select * from TABLE";
+        return sql.replace("TABLE", getTable());
     }
 
     public String getIp() {
