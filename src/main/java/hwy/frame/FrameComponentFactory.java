@@ -54,6 +54,7 @@ public class FrameComponentFactory {
         JLabel ipLabel = createLabel(FrameCons.IP_LABEL, labelPos);
         this.component.setIpLabel(ipLabel);
         JTextField ipText = createTextField(FrameCons.IP_TEXT_NAME, textPos);
+        ipText.setText(FrameCons.IP_DEFAULT_VALUE);
         this.component.setIpText(ipText);
     }
 
@@ -61,6 +62,7 @@ public class FrameComponentFactory {
         JLabel portLabel = createLabel(FrameCons.PORT_LABEL, labelPos.nextY());
         this.component.setPortLabel(portLabel);
         JTextField portText = createTextField(FrameCons.PORT_TEXT_NAME, textPos.nextY());
+        portText.setText(FrameCons.PORT_DEFAULT_VALUE);
         this.component.setPortText(portText);
     }
 
@@ -68,6 +70,7 @@ public class FrameComponentFactory {
         JLabel databaseLabel = createLabel(FrameCons.DATABASE_LABEL, labelPos.nextY());
         this.component.setDatabaseLabel(databaseLabel);
         JTextField databaseText = createTextField(FrameCons.DATABASE_TEXT_NAME, textPos.nextY());
+        databaseText.setText(FrameCons.DATABASE_DEFAULT_VALUE);
         this.component.setDatabaseText(databaseText);
     }
 
@@ -75,6 +78,7 @@ public class FrameComponentFactory {
         JLabel usernameLabel = createLabel(FrameCons.USERNAME_LABEL, labelPos.nextY());
         this.component.setUsernameLabel(usernameLabel);
         JTextField usernameText = createTextField(FrameCons.USERNAME_TEXT_NAME, textPos.nextY());
+        usernameText.setText(FrameCons.USERNAME_DEFAULT_VALUE);
         this.component.setUsernameText(usernameText);
     }
 
@@ -82,6 +86,7 @@ public class FrameComponentFactory {
         JLabel passwordLabel = createLabel(FrameCons.PASSWORD_LABEL, labelPos.nextY());
         this.component.setPasswordLabel(passwordLabel);
         JTextField passwordText = createTextField(FrameCons.PASSWORD_TEXT_NAME, textPos.nextY());
+        passwordText.setText(FrameCons.PASSWORD_DEFAULT_VALUE);
         this.component.setPasswordText(passwordText);
     }
 
@@ -89,6 +94,7 @@ public class FrameComponentFactory {
         JLabel tableLabel = createLabel(FrameCons.TABLE_LABEL, labelPos.nextY());
         this.component.setTableLabel(tableLabel);
         JTextField tableText = createTextField(FrameCons.TABLE_TEXT_NAME, textPos.nextY());
+        tableText.setText(FrameCons.TABLE__DEFAULT_VALUE);
         this.component.setTableText(tableText);
     }
 
@@ -96,6 +102,7 @@ public class FrameComponentFactory {
         JLabel outLabel = createLabel(FrameCons.OUTPATH_LABEL, labelPos.nextY());
         this.component.setOutLabel(outLabel);
         JTextField outText = createTextField(FrameCons.OUTPATH_TEXT_NAME, textPos.nextY());
+        outText.setText(FrameCons.OUTPATH_DEFAULT_VALUE);
         this.component.setOutText(outText);
     }
 
@@ -103,6 +110,7 @@ public class FrameComponentFactory {
         JLabel packageLabel = createLabel(FrameCons.PACKAGEPATH_LABEL, labelPos.nextY());
         this.component.setPackageLabel(packageLabel);
         JTextField packageText = createTextField(FrameCons.PACKAGEPATH_TEXT_NAME, textPos.nextY());
+        packageText.setText(FrameCons.PACKAGEPATH_DEFAULT_VALUE);
         this.component.setPackageText(packageText);
     }
 

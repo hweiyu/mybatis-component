@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DbUtil {
 
-    public <T> List<T> select(ConnectionParam config, T cls) {
+    public static <T> List<T> select(ConnectionParam config, T cls) {
         List<T> list = new ArrayList<T>();
         try (Connection con = getConnection(config);
              PreparedStatement pstmt = con.prepareStatement(config.getSql());
