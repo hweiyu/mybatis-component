@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DbUtil {
 
-    public static <T> List<T> select(ConnectionParam config, T cls) {
+    public static <T> List<T> select(ConnectionParam config, Class<T> cls) {
         List<T> list = new ArrayList<T>();
         try (Connection con = getConnection(config);
              PreparedStatement pstmt = con.prepareStatement(config.getSql());
@@ -34,15 +34,15 @@ public class DbUtil {
         throw new SQLException("database connect error!");
     }
 
-    @SuppressWarnings("unchecked")
-    private static  <T> List<T> getData(ResultSet rs, T cls)
-            throws SQLException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    private static <T> List<T> getData(ResultSet rs, Class<T> cls)
+            throws SQLException, IllegalAccessException,
+            InstantiationException, InvocationTargetException {
         List<T> result = new ArrayList<>();
-        Method[] methods = cls.getClass().getDeclaredMethods();
+        Method[] methods = cls.getDeclaredMethods();
         ResultSetMetaData metaData = rs.getMetaData();
         int colLen = metaData.getColumnCount();
         while (rs.next()) {
-            T curObj = (T) cls.getClass().newInstance();
+            T curObj = cls.newInstance();
             for (int i = 0; i < colLen; i++) {
                 String colsName = metaData.getColumnName(i + 1);
                 Object colsValue = rs.getObject(colsName);

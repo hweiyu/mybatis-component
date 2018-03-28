@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initBase() {
-        this.setTitle("mybatis逆向工程组件");
+        this.setTitle("mybatis逆向工程组件(JDK 1.8)");
         this.setSize(700, 350);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }

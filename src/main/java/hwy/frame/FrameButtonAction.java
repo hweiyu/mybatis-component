@@ -2,6 +2,8 @@ package hwy.frame;
 
 import hwy.constant.FrameCons;
 import hwy.exception.BusinessException;
+import hwy.handle.Handler;
+import hwy.handle.HandlerChain;
 import hwy.model.ConfigParam;
 import hwy.model.ConnectionParam;
 import hwy.util.StringUtil;
@@ -25,14 +27,14 @@ public class FrameButtonAction implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         // 判断触发源是否为按钮
-        if (e.getSource() == this.button) {
+        if (event.getSource() == this.button) {
             try {
-                ConfigParam config = getConfig();
-                //todo
-            } catch (BusinessException be) {
-                JOptionPane.showMessageDialog(panel, be.getMessage(), "错误说明", JOptionPane.ERROR_MESSAGE);
+                new HandlerChain(getConfig()).result();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(panel, e.getMessage(),
+                        "错误说明", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

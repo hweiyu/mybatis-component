@@ -12,12 +12,12 @@ public class DbTest {
 
     public static void main(String[] args) {
         ConnectionParam param = new ConnectionParam(
-                "127.0.0.1",
+                "192.168.1.101",
                 "3306",
-                "test",
+                "sinter_demo",
                 "root",
                 "123456",
-                "test_table"
+                "t_shop"
         );
         DbUtil.select(param, Column.class);
     }

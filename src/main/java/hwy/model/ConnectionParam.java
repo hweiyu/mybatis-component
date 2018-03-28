@@ -1,5 +1,7 @@
 package hwy.model;
 
+import hwy.constant.JdbcCons;
+
 public class ConnectionParam {
 
     private String ip;
@@ -23,17 +25,15 @@ public class ConnectionParam {
         this.username = username;
         this.password = password;
         this.table = table;
-        this.driver = "com.mysql.jdbc.Driver";
+        this.driver = JdbcCons.JDBC_DRIVER;
     }
 
     public String getUrl() {
-        String url = "jdbc:mysql://IP:PORT/DATABASE?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8";
-        return url.replace("IP", getIp()).replace("PORT", getPort()).replace("DATABASE", getDatabase());
+        return String.format(JdbcCons.CONNECT_TEMPLATE, getIp(), getPort(), getDatabase());
     }
 
     public String getSql() {
-        String sql = "select * from TABLE";
-        return sql.replace("TABLE", getTable());
+        return String.format(JdbcCons.SQL_TEMPLATE, getTable(), getDatabase());
     }
 
     public String getIp() {
