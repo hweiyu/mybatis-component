@@ -1,9 +1,8 @@
 package hwy.handle.impl;
 
-import freemarker.template.Configuration;
 import hwy.handle.Handler;
-import hwy.model.Column;
-import hwy.model.ConfigParam;
+import hwy.model.param.Column;
+import hwy.model.param.ConfigParam;
 import hwy.util.DbUtil;
 
 import java.util.List;
@@ -23,17 +22,10 @@ public class AssembleBaseInfoHandler implements Handler {
     @Override
     public void handle() {
         setTableColumns();
-        setFreemakerConfig();
     }
 
     private void setTableColumns() {
         List<Column> columns = DbUtil.select(param.getConnect(), Column.class);
         param.setColumns(columns);
-    }
-
-    private void setFreemakerConfig() {
-        Configuration conf = new Configuration();
-        conf.setClassForTemplateLoading(this.getClass(), "/template");
-        param.setTemplateConfig(conf);
     }
 }

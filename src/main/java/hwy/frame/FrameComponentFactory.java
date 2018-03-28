@@ -1,7 +1,7 @@
 package hwy.frame;
 
 import hwy.constant.FrameCons;
-import hwy.model.Position;
+import hwy.model.param.Position;
 
 import javax.swing.*;
 

@@ -1,7 +1,7 @@
 package hwy.handle.impl;
 
 import hwy.handle.Handler;
-import hwy.model.ConfigParam;
+import hwy.model.param.ConfigParam;
 
 /**
  * @author huangweiyu

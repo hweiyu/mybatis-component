@@ -1,7 +1,7 @@
 package hwy;
 
-import hwy.model.Column;
-import hwy.model.ConnectionParam;
+import hwy.model.param.Column;
+import hwy.model.param.ConnectionParam;
 import hwy.util.DbUtil;
 
 /**

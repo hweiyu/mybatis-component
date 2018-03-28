@@ -4,7 +4,7 @@ import hwy.handle.impl.DaoCreateHandler;
 import hwy.handle.impl.MapperCreateHandler;
 import hwy.handle.impl.AssembleBaseInfoHandler;
 import hwy.handle.impl.ModelCreateHandler;
-import hwy.model.ConfigParam;
+import hwy.model.param.ConfigParam;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package hwy.model;
+package hwy.model.param;
 
 import hwy.constant.JdbcCons;
 

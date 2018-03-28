@@ -1,8 +1,5 @@
 package hwy.constant;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class FrameCons {
 
     private FrameCons() {
@@ -42,26 +39,4 @@ public class FrameCons {
     public static final String PACKAGEPATH_DEFAULT_VALUE = "com.hwy";
 
     public static final String CREATE_BUTTON_NAME = "create";
-
-    public static final List<String> LABEL_TEXT_LIST = Arrays.asList(
-            IP_LABEL,
-            PORT_LABEL,
-            DATABASE_LABEL,
-            USERNAME_LABEL,
-            PASSWORD_LABEL,
-            TABLE_LABEL,
-            OUTPATH_LABEL,
-            PACKAGEPATH_LABEL
-    );
-
-    public static final List<String> TEXT_NAME_LIST = Arrays.asList(
-            IP_TEXT_NAME,
-            PORT_TEXT_NAME,
-            DATABASE_TEXT_NAME,
-            USERNAME_TEXT_NAME,
-            PASSWORD_TEXT_NAME,
-            TABLE_TEXT_NAME,
-            OUTPATH_TEXT_NAME,
-            PACKAGEPATH_TEXT_NAME
-    );
 }

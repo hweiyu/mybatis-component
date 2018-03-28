@@ -1,4 +1,4 @@
-package hwy.model;
+package hwy.model.param;
 
 public class Column {
 

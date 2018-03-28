@@ -1,6 +1,6 @@
 package hwy.util;
 
-import hwy.model.ConnectionParam;
+import hwy.model.param.ConnectionParam;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,7 +1,4 @@
-package hwy.model;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+package hwy.model.param;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +12,6 @@ public class ConfigParam {
     private String packagePath;
 
     private List<Column> columns;
-
-    private Configuration templateConfig;
 
     public ConfigParam(String outPath, String packagePath, ConnectionParam connect) {
         this.outPath = outPath;
@@ -55,13 +50,5 @@ public class ConfigParam {
 
     public void setColumns(List<Column> columns) {
         this.columns = columns;
-    }
-
-    public Configuration getTemplateConfig() {
-        return templateConfig;
-    }
-
-    public void setTemplateConfig(Configuration templateConfig) {
-        this.templateConfig = templateConfig;
     }
 }

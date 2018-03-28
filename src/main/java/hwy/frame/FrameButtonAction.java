@@ -2,10 +2,9 @@ package hwy.frame;
 
 import hwy.constant.FrameCons;
 import hwy.exception.BusinessException;
-import hwy.handle.Handler;
 import hwy.handle.HandlerChain;
-import hwy.model.ConfigParam;
-import hwy.model.ConnectionParam;
+import hwy.model.param.ConfigParam;
+import hwy.model.param.ConnectionParam;
 import hwy.util.StringUtil;
 
 import javax.swing.*;

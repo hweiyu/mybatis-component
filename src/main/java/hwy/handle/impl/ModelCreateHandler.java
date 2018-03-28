@@ -1,7 +1,11 @@
 package hwy.handle.impl;
 
+import hwy.constant.TemplateCons;
 import hwy.handle.Handler;
-import hwy.model.ConfigParam;
+import hwy.handle.factory.ModelFactory;
+import hwy.model.Bean;
+import hwy.model.param.ConfigParam;
+import hwy.util.TemplateUtil;
 
 /**
  * @author huangweiyu
@@ -17,6 +21,7 @@ public class ModelCreateHandler implements Handler {
 
     @Override
     public void handle() {
-
+        Bean data = new ModelFactory().getBean();
+        TemplateUtil.outFile(TemplateCons.MODEL_FILE_NAME, "D:\\test.txt", data);
     }
 }
