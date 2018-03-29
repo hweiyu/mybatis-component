@@ -31,6 +31,7 @@ public class FrameButtonAction implements ActionListener {
         if (event.getSource() == this.button) {
             try {
                 new HandlerChain(getConfig()).result();
+                JOptionPane.showMessageDialog(panel, "完成", "操作结果", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(panel, e.getMessage(),
                         "错误说明", JOptionPane.ERROR_MESSAGE);

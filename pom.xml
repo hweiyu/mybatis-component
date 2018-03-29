@@ -32,6 +32,7 @@
 
   <build>
     <plugins>
+      <!--导jar包插件，直接命令行执行 mvn package -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
