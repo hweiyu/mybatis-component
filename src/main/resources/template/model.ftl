@@ -1,29 +1,26 @@
-package ${data.packagePath}.${data.module}.model;
+package ${packagePath};
 
 /**
- * TABLE_NAME:(${data.tableName})
- *
+ * TABLE_NAME:(${table})
  */
+public class ${className} {
 
-public class ${data.className} {
-
-<#list data.columns as c>
+<#list fields as c>
     /**
-     * ${c.propertyCname?if_exists}
+     * ${c.javaDoc}
 	 */
-	private ${c.propertyType} ${c.propertyName};
+	private ${c.type} ${c.name};
+
 </#list>
 
-<#list data.columns as c>
-
-	public ${c.propertyType} get${c.methodName}() {
-		return ${c.propertyName};
+<#list fields as c>
+	public ${c.type} get${c.getMethod}() {
+		return this.${c.name};
 	}
 
-	public void set${c.methodName}(${c.propertyType} ${c.propertyName}) {
-		this.${c.propertyName} = ${c.propertyName};
+	public void set${c.setMethod}(${c.type} ${c.name}) {
+		this.${c.name} = ${c.name};
 	}
 </#list>
-
 
 }

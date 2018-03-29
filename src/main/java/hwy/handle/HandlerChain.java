@@ -2,7 +2,7 @@ package hwy.handle;
 
 import hwy.handle.impl.DaoCreateHandler;
 import hwy.handle.impl.MapperCreateHandler;
-import hwy.handle.impl.AssembleBaseInfoHandler;
+import hwy.handle.impl.TableDataHandler;
 import hwy.handle.impl.ModelCreateHandler;
 import hwy.model.param.ConfigParam;
 
@@ -41,7 +41,7 @@ public class HandlerChain {
     }
 
     public void result() {
-        this.addHandler(new AssembleBaseInfoHandler(param))
+        this.addHandler(new TableDataHandler(param))
                 .addHandler(new ModelCreateHandler(param))
                 .addHandler(new MapperCreateHandler(param))
                 .addHandler(new DaoCreateHandler(param))

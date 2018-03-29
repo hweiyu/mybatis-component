@@ -11,11 +11,11 @@ import java.util.List;
  * @author huangweiyu
  * @date 2018/3/28 15:06
  **/
-public class AssembleBaseInfoHandler implements Handler {
+public class TableDataHandler implements Handler {
 
     private ConfigParam param;
 
-    public AssembleBaseInfoHandler(ConfigParam param) {
+    public TableDataHandler(ConfigParam param) {
         this.param = param;
     }
 
