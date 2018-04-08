@@ -11,7 +11,7 @@ public class JdbcCons {
     }
 
     public static final String SQL_TEMPLATE =
-            "SELECT COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT FROM INFORMATION_SCHEMA.COLUMNS " +
+            "SELECT COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT, COLUMN_KEY FROM INFORMATION_SCHEMA.COLUMNS " +
                     "WHERE TABLE_NAME = '%s' AND TABLE_SCHEMA = '%s' " +
                     "ORDER BY ORDINAL_POSITION;";
 

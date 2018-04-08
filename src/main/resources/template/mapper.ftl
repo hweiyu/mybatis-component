@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <#assign start="#">
+ <#assign start=start+"{">
+ <#assign end="}">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="${data.packagePath}.${data.module}.dao.${data.className}DAO">
+<mapper namespace="${mapperPath}.${className}Mapper">
 
-    <resultMap id="BaseResultMap" type="${data.packagePath}.${data.module}.bean.${data.className}">
-		<#list data.columns as c>
-            <id column="${c.columnName}" jdbcType="${c.jdbcType}" property="${c.propertyName}" />
+    <resultMap id="${className}ResultMap" type="${modelPath}.${className}">
+		<#list fields as c>
+            <id column="${c.jdbcName}" jdbcType="${c.jdbcType}" property="${c.javaName}" />
         </#list>
     </resultMap>
 
-
     <sql id="Base_Column_List">
-		<#list data.columns as c>
-            ${c.columnName}<#if c_has_next>,</#if>
+		<#list fields as c>
+            ${c.jdbcName}<#if c_has_next>,</#if>
         </#list>
     </sql>
 
-
-    <insert id="insert" parameterType="${data.packagePath}.${data.module}.bean.${data.className}">
-        insert into ${data.tableName}(
-			 <#list data.columns as c>
-                 ${c.columnName}<#if c_has_next>,</#if>
-             </#list>
-        ) values(
-			  <#list data.columns as c>
-                  ${start}${c.propertyName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
-              </#list>
-        )
-    </insert>
-
-
-    <insert id="batchInsert" parameterType="${data.packagePath}.${data.module}.bean.${data.className}">
-        insert into ${data.tableName}(
-			<#list data.columns as c>
-                ${c.columnName}<#if c_has_next>,</#if>
-            </#list>
-        ) values
-        <foreach collection="beans" item="bean" separator=",">
-            (
-		<#list data.columns as c>
-            ${start}${c.propertyName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
-        </#list>
-            )
-        </foreach>
-    </insert>
-
-    <insert id="insertSelective" parameterType="${data.packagePath}.${data.module}.bean.${data.className}">
-        insert into ${data.tableName}
+    <insert id="insert" parameterType="${modelPath}.${className}">
+        insert into ${table}
         <trim prefix="(" suffix=")" suffixOverrides="," >
-  		    <#list data.columns as c>
-                <if test="${c.propertyName} != null and ${c.propertyName}!=''" >
-                    ${c.columnName}<#if c_has_next>,</#if>
+  		    <#list fields as c>
+                <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                    ${c.jdbcName}<#if c_has_next>,</#if>
                 </if>
             </#list>
         </trim>
-
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-			<#list data.columns as c>
-                <if test="${c.propertyName} != null and ${c.propertyName}!=''" >
-                    ${start}${c.propertyName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
+			<#list fields as c>
+                <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                    ${start}${c.javaName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
                 </if>
             </#list>
         </trim>
-
     </insert>
 
-    <delete id="delete" parameterType="${pkPropertyType}">
-        delete from ${data.tableName} where ${pkColumnName}=${start}${pkProperty},jdbcType=${pkJdbcType}${end}
+    <delete id="delete" parameterType="${modelPath}.${className}">
+        delete from ${table}
+        <where>
+            <#list fields as c>
+            <#if c.key>
+                <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                    ${c.jdbcName} = ${start}${c.javaName}${end}<#if c_has_next>,</#if>
+                </if>
+            </#if>
+            </#list>
+        </where>
     </delete>
 
-    <update id="update" parameterType="${data.packagePath}.${data.module}.bean.${data.className}">
-        update ${data.tableName}
+    <update id="update" parameterType="${modelPath}.${className}">
+        update ${table}
         <set>
-			<#list data.columns as c>
-                ${c.columnName}=${start}${c.propertyName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
+            <#list fields as c>
+                <#if !c.key>
+                    <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                        ${c.jdbcName}=${start}${c.javaName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
+                    </if>
+                </#if>
             </#list>
         </set>
-        where
-    ${pkColumnName}=${start}${pkProperty},jdbcType=${pkJdbcType}${end}
-    </update>
-
-    <update id="updateByPrimaryKeySelective" parameterType="${data.packagePath}.${data.module}.bean.${data.className}">
-        update ${data.tableName}
-        <set>
-    		<#list data.columns as c>
-                <if test="${c.propertyName} != null and ${c.propertyName}!=''" >
-                    ${c.columnName}=${start}${c.propertyName},jdbcType=${c.jdbcType}${end}<#if c_has_next>,</#if>
+        <where>
+            <#list fields as c>
+            <#if c.key>
+                <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                    ${c.jdbcName} = ${start}${c.javaName}${end}<#if c_has_next>,</#if>
                 </if>
+            </#if>
             </#list>
-        </set>
-        where
-    ${pkColumnName}=${start}${pkProperty},jdbcType=${pkJdbcType}${end}
+        </where>
     </update>
 
-    <select id="selectByPrimaryKey" parameterType="${pkPropertyType}" resultMap="BaseResultMap">
+    <select id="select" parameterType="${modelPath}.${className}" resultMap="${className}BaseResultMap">
         select <include refid="Base_Column_List"/>
-        from ${data.tableName}
-        where ${pkColumnName} = ${start}${pkProperty},jdbcType=${pkJdbcType}${end}
+        from ${table}
+        <where>
+            <#list fields as c>
+                <#if c.key>
+                    <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                        ${c.jdbcName} = ${start}${c.javaName}${end}<#if c_has_next>,</#if>
+                    </if>
+                </#if>
+            </#list>
+        </where>
+    </select>
+
+    <select id="get" parameterType="${modelPath}.${className}" resultMap="${className}BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from ${table}
+        <where>
+            <#list fields as c>
+                <#if c.key>
+                    <if test="${c.javaName} != null and ${c.javaName}!='' " >
+                        ${c.jdbcName} = ${start}${c.javaName}${end}<#if c_has_next>,</#if>
+                    </if>
+                </#if>
+            </#list>
+        </where>
     </select>
 
 </mapper>

@@ -1,56 +1,47 @@
 package ${packagePath};
 
 import java.util.List;
-import java.util.Map;
 
-import ${importPath};
+import ${modelPath}.${className};
 
 /**
- * interface ${className}Dao
+ * interface ${className}
  *
  */
-public interface ${data.className} {
+public interface ${className}Mapper {
 
-		/********************
-	 	 * 增加
-	 	 * @param ${data.varName}
-	 	 *
-	 	 *******************/
-	 	void insert(${data.className} ${data.varName});
+	/*
+	 * 增加
+	 * @param ${modelParam}
+	 *
+	 */
+	 int insert(${className} ${modelParam});
 
-		/********************
-	 	 * 增加Selective
-	 	 * @param ${data.varName}
-	 	 *
-	 	 *******************/
-	    void insertSelective(${data.className} ${data.varName});
+	 /*
+	 * 删除
+	 * @param ${modelParam}
+	 *
+	 */
+	 int delete(${className} ${modelParam});
 
-	    /********************
-	 	 * 删除
-	 	 * @param ${pkProperty}
-	 	 *
-	 	 *******************/
-	    void delete(${pkPropertyType} ${pkProperty});
+	 /*
+	  * 更新
+	  * @param ${modelParam}
+	  *
+	  */
+	 int update(${className} ${modelParam});
 
-	    /********************
-	 	 * 更新Selective
-	 	 * @param ${data.varName}
-	 	 *
-	 	 *******************/
-	    void updateByPrimaryKeySelective(${data.className} ${data.varName});
+	 /*
+	  * 根据主键查询
+	  * @param ${modelParam}
+	  *
+	  */
+     List<${className}> select(${className} ${modelParam});
 
-	    /********************
-	 	 * 更新
-	 	 * @param ${data.varName}
-	 	 *
-	 	 *******************/
-	    void update(${data.className} ${data.varName});
-
-	    /********************
-	 	 * 根据主键查询
-	 	 * @param ${pkProperty}
-	 	 *
-	 	 *******************/
-         ${data.className} selectByPrimaryKey(${pkPropertyType} ${pkProperty});
-
+      /*
+	  * 根据主键查询
+	  * @param ${modelParam}
+	  *
+	  */
+      ${className} get(${className} ${modelParam});
 }

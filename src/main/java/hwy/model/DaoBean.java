@@ -2,15 +2,33 @@ package hwy.model;
 
 public class DaoBean extends Bean {
 
-    private String val = "23423423";
+    private String packagePath;
 
-    public DaoBean() {}
+    private String modelParam;
 
-    public String getVal() {
-        return val;
+    private String modelPath;
+
+    public String getPackagePath() {
+        return packagePath;
     }
 
-    public void setVal(String val) {
-        this.val = val;
+    public void setPackagePath(String packagePath) {
+        this.packagePath = packagePath;
+    }
+
+    public String getModelParam() {
+        return modelParam;
+    }
+
+    public void setModelParam(String modelParam) {
+        this.modelParam = modelParam;
+    }
+
+    public String getModelPath() {
+        return modelPath;
+    }
+
+    public void setModelPath(String modelPath) {
+        this.modelPath = modelPath;
     }
 }

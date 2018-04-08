@@ -6,8 +6,6 @@ public class ModelBean extends Bean {
 
     private String packagePath;
 
-    private String className;
-
     private List<ClassField> fields;
 
     public String getPackagePath() {
@@ -16,14 +14,6 @@ public class ModelBean extends Bean {
 
     public void setPackagePath(String packagePath) {
         this.packagePath = packagePath;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     public List<ClassField> getFields() {

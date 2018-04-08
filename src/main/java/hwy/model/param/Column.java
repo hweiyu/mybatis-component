@@ -8,6 +8,8 @@ public class Column {
 
     private String columnComment;
 
+    private String columnKey;
+
     public Column() {}
 
     public String getColumnName() {
@@ -32,5 +34,13 @@ public class Column {
 
     public void setColumnComment(String columnComment) {
         this.columnComment = columnComment;
+    }
+
+    public String getColumnKey() {
+        return columnKey;
+    }
+
+    public void setColumnKey(String columnKey) {
+        this.columnKey = columnKey;
     }
 }
