@@ -1,5 +1,6 @@
 package hwy.handle.impl;
 
+import hwy.exception.BusinessException;
 import hwy.handle.Handler;
 import hwy.model.param.Column;
 import hwy.model.param.ConfigParam;
@@ -26,6 +27,9 @@ public class TableDataHandler implements Handler {
 
     private void setTableColumns() {
         List<Column> columns = DbUtil.select(param.getConnect(), Column.class);
+        if (null == columns || columns.isEmpty()) {
+            throw new BusinessException("table is not exist");
+        }
         param.setColumns(columns);
     }
 }
