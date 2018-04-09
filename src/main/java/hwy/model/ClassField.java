@@ -5,15 +5,35 @@ import hwy.model.param.Column;
 import hwy.util.StringUtil;
 
 /**
+ * model文件对应的表信息
  * @author huangweiyu
  * @date 2018/3/29 14:00
  **/
 public class ClassField {
 
+    /**
+     * 属性名
+     */
     private String name;
+
+    /**
+     * 属性类型
+     */
     private String type;
+
+    /**
+     * 属性注释信息
+     */
     private String javaDoc;
+
+    /**
+     * 属性set方法
+     */
     private String setMethod;
+
+    /**
+     * 属性get方法
+     */
     private String getMethod;
 
     public ClassField(Column column) {

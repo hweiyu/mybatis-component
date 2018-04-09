@@ -1,11 +1,23 @@
 package hwy.model;
 
+/**
+ * dao文件数据实体
+ */
 public class DaoBean extends Bean {
 
+    /**
+     * java包路径
+     */
     private String packagePath;
 
+    /**
+     * 参数
+     */
     private String modelParam;
 
+    /**
+     * 模型路径
+     */
     private String modelPath;
 
     public String getPackagePath() {

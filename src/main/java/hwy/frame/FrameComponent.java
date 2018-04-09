@@ -2,6 +2,9 @@ package hwy.frame;
 
 import javax.swing.*;
 
+/**
+ * 主窗体中的所有组件
+ */
 public class FrameComponent {
 
     private JPanel panel;

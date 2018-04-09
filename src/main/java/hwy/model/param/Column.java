@@ -1,13 +1,28 @@
 package hwy.model.param;
 
+/**
+ * 数据库表结构信息实体
+ */
 public class Column {
 
+    /**
+     * 字段名
+     */
     private String columnName;
 
+    /**
+     * 字段类型
+     */
     private String dataType;
 
+    /**
+     * 字段备注
+     */
     private String columnComment;
 
+    /**
+     * 主键标记
+     */
     private String columnKey;
 
     public Column() {}

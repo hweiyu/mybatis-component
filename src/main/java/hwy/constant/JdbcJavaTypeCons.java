@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * jdbc,java数据类型映射关系
  * @author huangweiyu
  * @date 2018/3/29 14:20
  **/

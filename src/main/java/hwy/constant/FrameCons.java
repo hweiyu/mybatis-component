@@ -1,5 +1,8 @@
 package hwy.constant;
 
+/**
+ * 窗体组件常量
+ */
 public class FrameCons {
 
     private FrameCons() {

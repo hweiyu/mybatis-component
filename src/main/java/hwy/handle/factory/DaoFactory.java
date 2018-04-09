@@ -7,6 +7,9 @@ import hwy.model.DaoBean;
 import hwy.model.param.ConfigParam;
 import hwy.util.StringUtil;
 
+/**
+ * dao工厂
+ */
 public class DaoFactory extends AbstractFactory {
 
     private ConfigParam config;

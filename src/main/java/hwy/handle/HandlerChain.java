@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * 处理链条
  * @author huangweiyu
  * @date 2018/3/28 15:09
  **/

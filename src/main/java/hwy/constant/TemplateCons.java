@@ -1,5 +1,8 @@
 package hwy.constant;
 
+/**
+ * 模板需要用的常量
+ */
 public class TemplateCons {
 
     private TemplateCons() {

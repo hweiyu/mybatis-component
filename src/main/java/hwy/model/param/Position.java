@@ -2,16 +2,34 @@ package hwy.model.param;
 
 import java.awt.*;
 
+/**
+ * swing组件坐标
+ */
 public class Position {
 
+    /**
+     * x坐标
+     */
     private int x;
 
+    /**
+     * y坐标
+     */
     private int y;
 
+    /**
+     * 宽度
+     */
     private int width;
 
+    /**
+     * 高度
+     */
     private int height;
 
+    /**
+     * 步长
+     */
     private int step;
 
     public Position(int x, int y, int width, int height, int step) {
@@ -22,11 +40,19 @@ public class Position {
         this.step = step;
     }
 
+    /**
+     * 下一个组件坐标
+     * @return
+     */
     public Position nextY() {
         setY(getY() + getStep());
         return this;
     }
 
+    /**
+     * 转换成swing组件对应的坐标实体
+     * @return
+     */
     public Rectangle convertToRect() {
         return new Rectangle(getX(), getY(), getWidth(), getHeight());
     }

@@ -14,10 +14,19 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 主窗体中，生成按钮对应的触发事件监听器
+ */
 public class FrameButtonAction implements ActionListener {
 
+    /**
+     * 按钮
+     */
     private JButton button;
 
+    /**
+     * 当前面板
+     */
     private JPanel panel;
 
     FrameButtonAction(JButton button, JPanel panel) {
@@ -30,6 +39,7 @@ public class FrameButtonAction implements ActionListener {
         // 判断触发源是否为按钮
         if (event.getSource() == this.button) {
             try {
+                //责任链方式，生成各个文件
                 new HandlerChain(getConfig()).result();
                 JOptionPane.showMessageDialog(panel, "完成", "操作结果", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
@@ -39,6 +49,10 @@ public class FrameButtonAction implements ActionListener {
         }
     }
 
+    /**
+     * 获取配置信息
+     * @return
+     */
     private ConfigParam getConfig() {
         Map<String, String> textMap = new HashMap<String, String>();
         for (Component component : panel.getComponents()) {
@@ -56,6 +70,11 @@ public class FrameButtonAction implements ActionListener {
                 getJdbcConfig(textMap));
     }
 
+    /**
+     * 获取jdbc配置信息
+     * @param textMap 参数map
+     * @return
+     */
     private ConnectionParam getJdbcConfig(Map<String, String> textMap) {
         return new ConnectionParam(
                 textMap.get(FrameCons.IP_TEXT_NAME),

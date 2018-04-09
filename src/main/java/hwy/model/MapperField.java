@@ -7,16 +7,35 @@ import hwy.util.StringUtil;
 /**
  * @author huangweiyu
  * @version V1.0
- * @Title: 描述
- * @Description: 描述
+ * @Title: mapper字段数据集
+ * @Description: mapper字段数据集
  * @date 2018/4/8 16:18
  **/
 public class MapperField {
 
+    /**
+     * java属性名
+     */
     private String javaName;
+
+    /**
+     * java属性类型
+     */
     private String javaType;
+
+    /**
+     * 表字段名
+     */
     private String jdbcName;
+
+    /**
+     * 表字段类型
+     */
     private String jdbcType;
+
+    /**
+     * 是否主键
+     */
     private Boolean key;
 
     public MapperField(Column column) {
@@ -24,6 +43,7 @@ public class MapperField {
         this.javaType = JdbcJavaTypeCons.get(column.getDataType().toLowerCase());
         this.jdbcName = column.getColumnName();
         this.jdbcType = column.getDataType().toUpperCase();
+        //主键标记
         final String keyFlag = "PRI";
         this.key = keyFlag.equals(column.getColumnKey());
     }

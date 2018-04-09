@@ -5,8 +5,14 @@ package hwy.model;
  */
 public class Bean {
 
+    /**
+     * 表名
+     */
     private String table;
 
+    /**
+     * 类名
+     */
     private String className;
 
     public String getTable() {

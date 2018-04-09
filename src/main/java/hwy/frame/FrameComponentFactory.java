@@ -5,21 +5,40 @@ import hwy.model.param.Position;
 
 import javax.swing.*;
 
+/**
+ * swing组件生成工厂
+ */
 public class FrameComponentFactory {
 
+    /**
+     * 包含所有用到的swing组件
+     */
     private FrameComponent component;
 
+    /**
+     * label的坐标
+     */
     private Position labelPos;
 
+    /**
+     * text的坐标
+     */
     private Position textPos;
 
     public FrameComponent create() {
+        //初始化组件的各个坐标
         createBase();
+        //生成所有组件
         initResources();
+        //将组件放入面板中
         createPanel();
+        //生成最终组件
         return result();
     }
 
+    /**
+     * 初始化组件的各个坐标
+     */
     private void createBase() {
         this.component = new FrameComponent();
         int step = 30;
@@ -27,6 +46,9 @@ public class FrameComponentFactory {
         this.textPos = new Position(120, 20, 300, 25, step);
     }
 
+    /**
+     * 生成所有组件
+     */
     private void initResources() {
         initPanel();
         initJdbcConnect();
@@ -121,12 +143,24 @@ public class FrameComponentFactory {
         this.component.setCreateBtn(createBtn);
     }
 
+    /**
+     * 生成JLabel组件
+     * @param text 内容
+     * @param pos 坐标
+     * @return
+     */
     private JLabel createLabel(String text, Position pos) {
         JLabel label = new JLabel(text);
         label.setBounds(pos.convertToRect());
         return label;
     }
 
+    /**
+     * 生成JTextField组件
+     * @param name 名称
+     * @param pos 坐标
+     * @return
+     */
     private JTextField createTextField(String name, Position pos) {
         int textColumns = 20;
         JTextField textField = new JTextField(textColumns);
@@ -135,6 +169,9 @@ public class FrameComponentFactory {
         return textField;
     }
 
+    /**
+     * 将组件放入面板中
+     */
     private void createPanel() {
         JPanel panel = this.component.getPanel();
         panel.add(this.component.getIpLabel());
@@ -156,6 +193,10 @@ public class FrameComponentFactory {
         panel.add(this.component.getCreateBtn());
     }
 
+    /**
+     * 返回包含所有组件的对象
+     * @return
+     */
     private FrameComponent result() {
         return this.component;
     }

@@ -7,6 +7,7 @@ import hwy.model.param.ConfigParam;
 import hwy.util.StringUtil;
 
 /**
+ * 创建dao文件处理类
  * @author huangweiyu
  * @date 2018/3/28 15:31
  **/

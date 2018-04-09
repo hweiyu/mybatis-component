@@ -2,20 +2,44 @@ package hwy.model.param;
 
 import hwy.constant.JdbcCons;
 
+/**
+ * jdbc配置信息
+ */
 public class ConnectionParam {
 
+    /**
+     * ip
+     */
     private String ip;
 
+    /**
+     * 端品
+     */
     private String port;
 
+    /**
+     * 数据库
+     */
     private String database;
 
+    /**
+     * 用户名
+     */
     private String username;
 
+    /**
+     * 密码
+     */
     private String password;
 
+    /**
+     * 表名
+     */
     private String table;
 
+    /**
+     * 数据库驱动
+     */
     private String driver;
 
     public ConnectionParam(String ip, String port, String database, String username, String password, String table) {
@@ -28,10 +52,17 @@ public class ConnectionParam {
         this.driver = JdbcCons.JDBC_DRIVER;
     }
 
+    /**
+     * 拼接的数据库链接url
+     * @return
+     */
     public String getUrl() {
         return String.format(JdbcCons.CONNECT_TEMPLATE, getIp(), getPort(), getDatabase());
     }
 
+    /**
+     * 拼接的数据库查表结构的sql
+     */
     public String getSql() {
         return String.format(JdbcCons.SQL_TEMPLATE, getTable(), getDatabase());
     }

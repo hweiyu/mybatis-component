@@ -12,6 +12,9 @@ import hwy.util.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * mapper工厂
+ */
 public class MapperFactory extends AbstractFactory {
 
     private ConfigParam config;

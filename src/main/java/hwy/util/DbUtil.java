@@ -8,6 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 数据库工具类
+ */
 public class DbUtil {
 
     public static <T> List<T> select(ConnectionParam config, Class<T> cls) {

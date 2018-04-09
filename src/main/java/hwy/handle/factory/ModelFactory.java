@@ -12,6 +12,9 @@ import hwy.util.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * model工厂
+ */
 public class ModelFactory extends AbstractFactory {
 
     private ConfigParam config;

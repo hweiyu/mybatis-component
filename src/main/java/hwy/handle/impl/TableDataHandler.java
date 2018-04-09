@@ -9,6 +9,7 @@ import hwy.util.DbUtil;
 import java.util.List;
 
 /**
+ * 数据库表结构处理类
  * @author huangweiyu
  * @date 2018/3/28 15:06
  **/
@@ -26,6 +27,7 @@ public class TableDataHandler implements Handler {
     }
 
     private void setTableColumns() {
+        //根据表信息，获取数据表结构
         List<Column> columns = DbUtil.select(param.getConnect(), Column.class);
         if (null == columns || columns.isEmpty()) {
             throw new BusinessException("table is not exist");
